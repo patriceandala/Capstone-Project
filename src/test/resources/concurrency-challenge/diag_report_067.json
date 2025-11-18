@@ -1,0 +1,7 @@
+{
+  "vin": "WDDC0C80848350C42",
+  "sequence_id": 1,
+  "report_type": "ECU_FIRMWARE_UPDATE",
+  "timestamp_utc": 1690000001,
+  "status_code": "PENDING_UPDATE"
+}

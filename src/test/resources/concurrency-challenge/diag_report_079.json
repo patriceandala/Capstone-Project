@@ -1,0 +1,7 @@
+{
+  "vin": "WDDE9871C1DA2DB4D",
+  "sequence_id": 0,
+  "report_type": "INITIAL_DIAGNOSTIC",
+  "timestamp_utc": 1690000250,
+  "status_code": "ERR"
+}

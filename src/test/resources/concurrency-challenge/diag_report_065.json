@@ -1,0 +1,7 @@
+{
+  "vin": "WDD973D17BB30C347",
+  "sequence_id": 1,
+  "report_type": "ECU_FIRMWARE_UPDATE",
+  "timestamp_utc": 1690000011,
+  "status_code": "PENDING_UPDATE"
+}

@@ -1,0 +1,7 @@
+{
+  "vin": "WDDB6CEF41140D644",
+  "sequence_id": 0,
+  "report_type": "INITIAL_DIAGNOSTIC",
+  "timestamp_utc": 1690000290,
+  "status_code": "ERR"
+}

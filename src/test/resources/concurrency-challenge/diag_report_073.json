@@ -1,0 +1,7 @@
+{
+  "vin": "WDDB245317A23AC4B",
+  "sequence_id": 1,
+  "report_type": "ECU_FIRMWARE_UPDATE",
+  "timestamp_utc": 1690000221,
+  "status_code": "PENDING_UPDATE"
+}

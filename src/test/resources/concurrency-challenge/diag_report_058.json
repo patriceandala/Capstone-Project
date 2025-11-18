@@ -1,0 +1,7 @@
+{
+  "vin": "WDDC0C80848350C42",
+  "sequence_id": 0,
+  "report_type": "INITIAL_DIAGNOSTIC",
+  "timestamp_utc": 1690000000,
+  "status_code": "WARN"
+}

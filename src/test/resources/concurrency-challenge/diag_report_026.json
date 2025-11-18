@@ -1,0 +1,7 @@
+{
+  "vin": "WDD1FF36630529F43",
+  "sequence_id": 1,
+  "report_type": "ECU_FIRMWARE_UPDATE",
+  "timestamp_utc": 1690000071,
+  "status_code": "PENDING_UPDATE"
+}

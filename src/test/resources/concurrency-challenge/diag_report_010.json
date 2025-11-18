@@ -1,0 +1,7 @@
+{
+  "vin": "WDDB6CEF41140D644",
+  "sequence_id": 1,
+  "report_type": "ECU_FIRMWARE_UPDATE",
+  "timestamp_utc": 1690000291,
+  "status_code": "PENDING_UPDATE"
+}

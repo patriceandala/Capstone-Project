@@ -1,0 +1,7 @@
+{
+  "vin": "WDDB1A755C1A1654E",
+  "sequence_id": 1,
+  "report_type": "ECU_FIRMWARE_UPDATE",
+  "timestamp_utc": 1690000151,
+  "status_code": "PENDING_UPDATE"
+}
