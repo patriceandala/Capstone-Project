@@ -1,0 +1,21 @@
+[
+  {
+    "job_id": 1001,
+    "job_name": "First_Job_With_ID_1001",
+    "dependencies": [],
+    "notes": "First occurrence"
+  },
+  {
+    "job_id": 1001,
+    "job_name": "Second_Job_With_ID_1001",
+    "dependencies": [],
+    "notes": "Duplicate ID - should be flagged"
+  },
+  {
+    "job_id": 1002,
+    "job_name": "Unique_Job",
+    "dependencies": [],
+    "notes": "Valid job"
+  }
+]
+

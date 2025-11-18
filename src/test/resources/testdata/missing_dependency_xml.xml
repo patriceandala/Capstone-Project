@@ -1,0 +1,6 @@
+<?xml version="1.0" ?>
+<ProcessChain>
+  <Job name="Job_With_Missing_Dependency" id="1001" dependsOn="9999"/>
+  <Job name="Valid_Job" id="1002"/>
+</ProcessChain>
+

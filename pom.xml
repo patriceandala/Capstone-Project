@@ -18,8 +18,8 @@
         <maven.compiler.target>1.8</maven.compiler.target>
         <jackson.version>2.15.2</jackson.version>
         <jgraph.version>1.5.2</jgraph.version>
-        <junit.version>4.13.2</junit.version>
-        <mockito.version>3.12.4</mockito.version>
+        <junit.version>5.10.0</junit.version>
+        <mockito.version>5.6.0</mockito.version>
     </properties>
 
     <dependencies>
@@ -52,10 +52,10 @@
             <version>${jgraph.version}</version>
         </dependency>
 
-        <!-- JUnit for testing -->
+        <!-- JUnit 5 for testing -->
         <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter</artifactId>
             <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
@@ -64,6 +64,12 @@
         <dependency>
             <groupId>org.mockito</groupId>
             <artifactId>mockito-core</artifactId>
+            <version>${mockito.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-junit-jupiter</artifactId>
             <version>${mockito.version}</version>
             <scope>test</scope>
         </dependency>
@@ -83,7 +89,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>2.22.2</version>
+                <version>3.0.0</version>
             </plugin>
         </plugins>
     </build>

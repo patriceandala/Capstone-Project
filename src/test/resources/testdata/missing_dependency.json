@@ -1,0 +1,20 @@
+[
+  {
+    "job_id": 1001,
+    "job_name": "Job_With_Missing_Dependency",
+    "dependencies": [
+      {
+        "job_id": 9999,
+        "status": "Success"
+      }
+    ],
+    "notes": "Dependency 9999 does not exist in this file"
+  },
+  {
+    "job_id": 1002,
+    "job_name": "Valid_Job",
+    "dependencies": [],
+    "notes": "Valid job"
+  }
+]
+

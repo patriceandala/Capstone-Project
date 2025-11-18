@@ -1,0 +1,8 @@
+<?xml version="1.0" ?>
+<ProcessChain>
+  <Job name="Backup_Production_Databases_Oracle" id="2001"/>
+  <Job name="Aggregate_Stuttgart_Assembly_Data" id="3100" dependsOn="2001"/>
+  <Job name="Reconcile_Parts_Inventory_SAP" id="3200" dependsOn="3100"/>
+  <Job name="Consolidate_Financials_SAP" id="4100" dependsOn="2001"/>
+</ProcessChain>
+

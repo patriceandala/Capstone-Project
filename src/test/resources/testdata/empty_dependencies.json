@@ -1,0 +1,15 @@
+[
+  {
+    "job_id": 1001,
+    "job_name": "Job_With_Empty_Dependencies",
+    "dependencies": [],
+    "notes": "Valid job with no dependencies"
+  },
+  {
+    "job_id": 1002,
+    "job_name": "Another_Job",
+    "dependencies": [],
+    "notes": "Also no dependencies"
+  }
+]
+

@@ -5,13 +5,13 @@ import com.tana.migration.exception.DataAnomalyException;
 import com.tana.migration.model.CompetitorJob;
 import com.tana.migration.model.JobDependency;
 import com.tana.migration.model.RmjJob;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * Unit tests for CdmMapperImpl.
@@ -20,7 +20,7 @@ public class CdmMapperImplTest {
     
     private CdmMapperImpl mapper;
     
-    @Before
+    @BeforeEach
     public void setUp() {
         mapper = new CdmMapperImpl();
     }
@@ -40,10 +40,13 @@ public class CdmMapperImplTest {
         assertEquals(Integer.valueOf(1002), job1.getDependencyJobIds().get(0));
     }
     
-    @Test(expected = CircularDependencyException.class)
-    public void testMapToRmj_CircularDependency() throws DataAnomalyException {
+    @Test
+    public void testMapToRmj_CircularDependency() {
         List<CompetitorJob> jobs = createCircularDependencyJobs();
-        mapper.mapToRmj(jobs); // Should throw CircularDependencyException
+        
+        assertThrows(CircularDependencyException.class, () -> {
+            mapper.mapToRmj(jobs);
+        });
     }
     
     @Test
@@ -75,12 +78,14 @@ public class CdmMapperImplTest {
         assertEquals(2, reconciled.size());
     }
     
-    @Test(expected = DataAnomalyException.class)
-    public void testReconcileData_WithConflicts() throws DataAnomalyException {
+    @Test
+    public void testReconcileData_WithConflicts() {
         List<CompetitorJob> source1 = createValidJobs();
         List<CompetitorJob> source2 = createConflictingJobs();
         
-        mapper.reconcileData(source1, source2); // Should throw ContradictoryDataException
+        assertThrows(DataAnomalyException.class, () -> {
+            mapper.reconcileData(source1, source2);
+        });
     }
     
     // Helper methods to create test data
@@ -116,9 +121,9 @@ public class CdmMapperImplTest {
         
         CompetitorJob job1 = new CompetitorJob(1001, "Different_Name");
         job1.addDependency(new JobDependency(1003)); // Different dependency
+        job1.setSourceFile("source2.json");
         jobs.add(job1);
         
         return jobs;
     }
 }
-

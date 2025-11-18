@@ -1,0 +1,26 @@
+[
+  {
+    "job_id": null,
+    "job_name": "Job_With_Null_ID",
+    "dependencies": [],
+    "notes": "Test null job_id"
+  },
+  {
+    "job_id": 2001,
+    "job_name": null,
+    "dependencies": [],
+    "notes": "Test null job_name"
+  },
+  {
+    "job_id": 2002,
+    "job_name": "Valid_Job",
+    "dependencies": [
+      {
+        "job_id": null,
+        "status": "Success"
+      }
+    ],
+    "notes": "Test null dependency job_id"
+  }
+]
+
