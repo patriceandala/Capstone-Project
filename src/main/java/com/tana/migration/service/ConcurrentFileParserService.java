@@ -2,9 +2,8 @@ package com.tana.migration.service;
 
 import com.tana.migration.CompetitorParser;
 import com.tana.migration.exception.DataAnomalyException;
+import com.tana.migration.factory.ParserFactory;
 import com.tana.migration.model.CompetitorJob;
-import com.tana.migration.parser.JsonCompetitorParser;
-import com.tana.migration.parser.XmlCompetitorParser;
 
 import java.io.File;
 import java.util.*;
@@ -25,23 +24,36 @@ public class ConcurrentFileParserService {
     
     private final ExecutorService executorService;
     private final int threadPoolSize;
+    private final ParserFactory parserFactory;
     
     /**
      * Creates a ConcurrentFileParserService with default thread pool size
-     * (number of available processors).
+     * (number of available processors) and default parser factory.
      */
     public ConcurrentFileParserService() {
-        this(Runtime.getRuntime().availableProcessors());
+        this(Runtime.getRuntime().availableProcessors(), null);
     }
     
     /**
-     * Creates a ConcurrentFileParserService with specified thread pool size.
+     * Creates a ConcurrentFileParserService with specified thread pool size and default parser factory.
      * 
      * @param threadPoolSize Number of threads in the pool
      */
     public ConcurrentFileParserService(int threadPoolSize) {
+        this(threadPoolSize, null);
+    }
+    
+    /**
+     * Creates a ConcurrentFileParserService with specified thread pool size and parser factory.
+     * 
+     * @param threadPoolSize Number of threads in the pool
+     * @param parserFactory Factory for creating parsers (if null, uses default FileExtensionParserFactory)
+     */
+    public ConcurrentFileParserService(int threadPoolSize, ParserFactory parserFactory) {
         this.threadPoolSize = threadPoolSize;
         this.executorService = Executors.newFixedThreadPool(threadPoolSize);
+        // Dependency Injection: Use provided factory or default implementation
+        this.parserFactory = parserFactory != null ? parserFactory : new com.tana.migration.factory.FileExtensionParserFactory();
     }
     
     /**
@@ -98,8 +110,8 @@ public class ConcurrentFileParserService {
      */
     private ParsingTaskResult parseFile(String filePath) {
         try {
-            // Determine parser based on file extension
-            CompetitorParser parser = getParserForFile(filePath);
+            // Use factory to get appropriate parser (Dependency Inversion Principle)
+            CompetitorParser parser = parserFactory.createParser(filePath);
             
             // Parse the file
             List<CompetitorJob> jobs = parser.parse(filePath);
@@ -115,24 +127,6 @@ public class ConcurrentFileParserService {
         } catch (Exception e) {
             return new ParsingTaskResult(null, 
                 new FileParsingError(filePath, "Unexpected error: " + e.getMessage()));
-        }
-    }
-    
-    /**
-     * Determines the appropriate parser based on file extension.
-     * 
-     * @param filePath Path to the file
-     * @return Appropriate parser (JsonCompetitorParser or XmlCompetitorParser)
-     */
-    private CompetitorParser getParserForFile(String filePath) {
-        String lowerPath = filePath.toLowerCase();
-        if (lowerPath.endsWith(".json")) {
-            return new JsonCompetitorParser();
-        } else if (lowerPath.endsWith(".xml")) {
-            return new XmlCompetitorParser();
-        } else {
-            // Default to JSON parser
-            return new JsonCompetitorParser();
         }
     }
     
